@@ -237,7 +237,7 @@ goods_input_androids_add: "@androids! андроиды input"
 goods_input_androids_add_desc: "Объём потребления: @androids! андроиды."
 goods_output_androids_add: "@androids! андроиды output"
 goods_output_androids_add_desc: "Объём производства: @androids! андроиды."
-goods_input_electricity_mult: "@electricity! Electricity input"
+goods_input_electricity_mult: "@electricity! Электричество — потребление"
 goods_input_electricity_mult_desc: "Бонус или штраф к объёму потребления @electricity!."
 
 global_electricity: "национальная электроэнергия"
@@ -257,7 +257,7 @@ goods_input_interactive_entertainment_add: "@interactive_entertainment! инте
 goods_input_interactive_entertainment_add_desc: "Объём потребления: @interactive_entertainment! интерактивные развлечения."
 goods_input_luxury_automobiles_add: "@luxury_automobiles! автомобили класса люкс input"
 goods_input_luxury_automobiles_add_desc: "Объём потребления: @luxury_automobiles! автомобили класса люкс."
-goods_input_luxury_clothes_add: "@luxury_clothes! Luxury Clothes input"
+goods_input_luxury_clothes_add: "@luxury_clothes! Элитная одежда — потребление"
 goods_input_luxury_clothes_add_desc: "Объём потребления: @luxury_clothes! Luxury Clothes."
 goods_input_luxury_furniture_add: "@luxury_furniture! Luxury мебель input"
 goods_input_luxury_furniture_add_desc: "Объём потребления: @luxury_furniture! Luxury мебель."
@@ -290,18 +290,18 @@ goods_output_robotics_mult_desc: "Бонус или штраф к объёму �
 goods_input_light_fuel_mult_desc: "A bonus or penalty to the amount of @light_fuel! лёгкое топливо consumed by buildings" # UPDATED
 goods_output_electroniccomponents_add_desc: "Объём производства: @electroniccomponents! электронные компоненты." # UPDATED
 goods_output_dye_mult: "Производство @dye! Dye output"
-goods_output_dye_mult_desc: "A bonus or penalty to the amount of @dye! Dye produced by buildings"
+goods_output_dye_mult_desc: "Бонус или штраф к объёму производства красителей."
 goods_output_tea_mult: "Производство @tea! Tea output"
-goods_output_tea_mult_desc: "A bonus or penalty to the amount of @tea! Tea produced by buildings"
+goods_output_tea_mult_desc: "Бонус или штраф к объёму производства чая."
 goods_output_coffee_mult: "Производство @coffee! Coffee output"
-goods_output_coffee_mult_desc: "A bonus or penalty to the amount of @coffee! Coffee produced by buildings"
-goods_input_fine_art_add: "@fine_art! Fine Art input"
+goods_output_coffee_mult_desc: "Бонус или штраф к объёму производства кофе."
+goods_input_fine_art_add: "@fine_art! Предметы искусства — потребление"
 goods_input_fine_art_add_desc: "Объём потребления: @fine_art! Fine Art."
 processors: "микросхемы" # UPDATED
-goods_input_processors_add: "@processors! микросхемы input" # UPDATED
+goods_input_processors_add: "@processors! Микросхемы — потребление"
 goods_input_processors_add_desc: "Объём потребления: @processors! микросхемы." # UPDATED
-goods_output_processors_add: "@processors! микросхемы output" # UPDATED
+goods_output_processors_add: "@processors! Микросхемы — производство"
 goods_output_processors_add_desc: "Объём производства: @processors! микросхемы." # UPDATED
-goods_output_processors_mult: "@processors! микросхемы output" # UPDATED
-goods_output_processors_mult_desc: "A bonus or penalty to the amount of @processors! микросхемы produced by buildings" # UPDATED
+goods_output_processors_mult: "@processors! Микросхемы — производство"
+goods_output_processors_mult_desc: "Бонус или штраф к объёму производства микросхем."
 
