@@ -1,0 +1,42 @@
+﻿l_russian:
+# Рабочий перевод Tech & Res. Сохранены все исходные ключи, игровые команды и переменные.
+
+ ztr_demography_progress_bar: "Демографическое развитие"
+ ztr_demography_notification_group: "Демографический переход"
+ notification_ztr_demography_stage_advanced_name: "Переход на следующую демографическую стадию"
+ notification_ztr_demography_stage_advanced_tooltip: "#header $notification_ztr_demography_stage_advanced_name$#!\n$notification_ztr_demography_stage_advanced_desc$"
+ notification_ztr_demography_stage_regressed_name: "Возврат на предыдущую демографическую стадию"
+ notification_ztr_demography_stage_regressed_tooltip: "#header $notification_ztr_demography_stage_regressed_name$#!\n$notification_ztr_demography_stage_regressed_desc$"
+ ztr_demography_stage_flavour_unknown: "стадия, на которой уровень рождаемости и смертности ещё изучается"
+ notification_ztr_demography_stage_advanced_desc: "Наш демографический переход достиг стадии #v [GetPlayer.MakeScope.ScriptValue('ztr_demography_applied_stage')|0]#!. Уровни рождаемости и смертности соответствующим образом изменились." # UPDATED
+ notification_ztr_demography_stage_regressed_desc: "Наш демографический переход вернулся к стадии #v [GetPlayer.MakeScope.ScriptValue('ztr_demography_applied_stage')|0]#!. Застой уровня жизни и доходов свёл на нет часть достигнутого прогресса." # UPDATED
+ je_demography: "Демография" # UPDATED
+
+ ztr_demography_vital_births_label: "\n[Concept('concept_pop_growth','Рождений')]: " # UPDATED
+ ztr_demography_vital_deaths_label: " в год\n[Concept('concept_pop_growth','Смертей')]: " # UPDATED
+ ztr_demography_vital_children_label: " в год\nДетей на одну женщину: " # UPDATED
+ je_demography_status: "Изменение составляет #variable [ROOT.GetCountry.MakeScope.ScriptValue('ztr_demography_recorded_yearly_change')|+=1]#! пунктов в год." # UPDATED
+ ztr_demography_social_collecting_loc: "пока неактивно: требуется пять лет накопленных данных"
+ ztr_demography_social_value_loc: "[ROOT.GetCountry.MakeScope.ScriptValue('ztr_demography_shown_economy')|+=1]"
+
+ ztr_demography_region_north_america_loc: "\n$TAB$• Северная Америка: [ROOT.GetCountry.MakeScope.ScriptValue('ztr_demography_shown_region')|+=1]"
+ ztr_demography_region_oceania_loc: "\n$TAB$• Океания: [ROOT.GetCountry.MakeScope.ScriptValue('ztr_demography_shown_region')|+=1]"
+ ztr_demography_region_latin_america_loc: "\n$TAB$• Латинская Америка: [ROOT.GetCountry.MakeScope.ScriptValue('ztr_demography_shown_region')|+=1]"
+ ztr_demography_region_none_loc: ""
+
+ ztr_demography_stage_flavour_1: "стадия #v доиндустриального общества#!: #positive_value очень высокая#! #positive_value рождаемость#! и #negative_value высокая#! #negative_value смертность#!" # UPDATED
+ ztr_demography_stage_flavour_2: "стадия #v раннего индустриального общества#!: #positive_value очень высокая#! #positive_value рождаемость#! и #negative_value средняя#! #negative_value смертность#!" # UPDATED
+ ztr_demography_stage_flavour_3: "стадия #v зрелого индустриального общества#!: #positive_value высокая#! #positive_value рождаемость#! и #negative_value низкая#! #negative_value смертность#!" # UPDATED
+ ztr_demography_stage_flavour_4: "стадия #v позднего индустриального общества#!: #positive_value средняя#! #positive_value рождаемость#! и #negative_value очень низкая#! #negative_value смертность#!" # UPDATED
+ ztr_demography_stage_flavour_5: "стадия #v раннего постиндустриального общества#!: #positive_value низкая#! #positive_value рождаемость#! и #negative_value очень низкая#! #negative_value смертность#!" # UPDATED
+ ztr_demography_stage_flavour_6: "стадия #v зрелого постиндустриального общества#!: #positive_value низкая#! #positive_value рождаемость#! и #negative_value очень низкая#! #negative_value смертность#!" # UPDATED
+ ztr_demography_stage_flavour_7: "стадия #v позднего постиндустриального общества#!: #positive_value минимальная#! #positive_value рождаемость#! и #negative_value минимальная#! #negative_value смертность#!" # UPDATED
+ ztr_demography_stage_flavour_8: "стадия #v стагнации#!: #positive_value практически отсутствующая#! #positive_value рождаемость#! и #negative_value минимальная#! #negative_value смертность#!" # UPDATED
+ ztr_demography_stage_flavour_9: "стадия #v демографического спада#!: #positive_value практически отсутствующая#! #positive_value рождаемость#! и #negative_value растущая#! #negative_value смертность#!" # UPDATED
+
+ ztr_demography_progress_bar_desc: "Стадия #v [ROOT.GetCountry.MakeScope.ScriptValue('ztr_demography_applied_stage')|0]#!: [JournalEntry.GetCurrentBarValue(ScriptedProgressBar.Self)|0]/1000" # UPDATED
+
+ # Показатели рождаемости и смертности добавляются в TOOLTIP_COUNTRY_POP_GROWTH. Вычисления GetPlayer оставлены без изменений.
+ ztr_demography_vital_rates: "$ztr_demography_vital_births_label$#v [Multiply_CFixedPoint(Max_CFixedPoint(Max_CFixedPoint(Add_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ztr_demography_birth_base'), Multiply_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ztr_demography_birth_share'), Multiply_CFixedPoint('(CFixedPoint)$NETGROWTHRATE|5$', '(CFixedPoint)1000'))), Multiply_CFixedPoint('(CFixedPoint)$NETGROWTHRATE|5$', '(CFixedPoint)1000')), '(CFixedPoint)0'), GetPlayer.MakeScope.ScriptValue('ztr_demography_population_thousands'))|*]#!$ztr_demography_vital_deaths_label$#v [Multiply_CFixedPoint(Subtract_CFixedPoint(Max_CFixedPoint(Max_CFixedPoint(Add_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ztr_demography_birth_base'), Multiply_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ztr_demography_birth_share'), Multiply_CFixedPoint('(CFixedPoint)$NETGROWTHRATE|5$', '(CFixedPoint)1000'))), Multiply_CFixedPoint('(CFixedPoint)$NETGROWTHRATE|5$', '(CFixedPoint)1000')), '(CFixedPoint)0'), Multiply_CFixedPoint('(CFixedPoint)$NETGROWTHRATE|5$', '(CFixedPoint)1000')), GetPlayer.MakeScope.ScriptValue('ztr_demography_population_thousands'))|*]#!$ztr_demography_vital_children_label$#v [Multiply_CFixedPoint(Max_CFixedPoint(Max_CFixedPoint(Add_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ztr_demography_birth_base'), Multiply_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ztr_demography_birth_share'), Multiply_CFixedPoint('(CFixedPoint)$NETGROWTHRATE|5$', '(CFixedPoint)1000'))), Multiply_CFixedPoint('(CFixedPoint)$NETGROWTHRATE|5$', '(CFixedPoint)1000')), '(CFixedPoint)0'), GetPlayer.MakeScope.ScriptValue('ztr_demography_fertility_factor'))|2]#!"
+
+ je_demography_reason: "[ROOT.GetCountry.GetName] находится на стадии #v [ROOT.GetCountry.MakeScope.ScriptValue('ztr_demography_applied_stage')|0]#! из 9 стадий [Concept('concept_demographic_stages','$concept_demographic_stages$')]: [SCOPE.GetRootScope.GetCountry.GetCustom('ztr_demography_stage_flavour')].\n\n[ROOT.GetCountry.GetPopGrowthDesc]\n\nСтадия 1 охватывает значения #b от 0 до 200#!. Затем каждые #b #white 100#! пунктов#! страна переходит на следующую стадию.\n#white Годовой прогресс#! ограничен значениями от #positive_value +15#! до #negative_value -5#! пунктов.\n\nНа прогресс влияют следующие факторы:\n[concept_demographic_drift]: [ROOT.GetCountry.MakeScope.ScriptValue('ztr_demography_shown_drift')|+=1]\n[concept_social_momentum]: [ROOT.GetCountry.GetCustom('ztr_demography_social_momentum')]\n[concept_demographic_factors]: [ROOT.GetCountry.MakeScope.ScriptValue('ztr_demography_shown_extra')|+=1]\n$TAB$• [GetLawGroup('lawgroup_health_system').GetName]: [ROOT.GetCountry.MakeScope.ScriptValue('ztr_demography_shown_healthcare')|+=1]\n$TAB$• [GetLawGroup('lawgroup_slavery').GetName]: [ROOT.GetCountry.MakeScope.ScriptValue('ztr_demography_shown_slavery')|+=1]\n$TAB$• [GetLawGroup('lawgroup_citizenship').GetName] / [GetLawGroup('lawgroup_migration').GetName]: [ROOT.GetCountry.MakeScope.ScriptValue('ztr_demography_shown_immigration')|+=1]\n$TAB$• [GetLawType('law_coercive_pronatalism').GetName]: [ROOT.GetCountry.MakeScope.ScriptValue('ztr_demography_shown_pronatalism')|+=1]\n$TAB$• Культура: [ROOT.GetCountry.MakeScope.ScriptValue('ztr_demography_shown_traditional')|+=1][ROOT.GetCountry.GetCustom('ztr_demography_region_factor')]" # UPDATED
