@@ -1,0 +1,38 @@
+﻿l_russian:
+
+# НОВОЕ 1.0
+
+ rule_ztr_decolonization_content: "Контент деколонизации (Tech&Res)"
+ setting_allow_ztr_decolonization_content: "#tooltippable #tooltip:[GetPlayer.GetTooltipTag],setting_allow_ztr_decolonization_content_desc #high Включено#!#!#!"
+ setting_allow_ztr_decolonization_content_desc: "Разрешить общий контент [Concept('concept_decolonization','$concept_decolonization$')] в этой кампании для #b исторического#! развития событий после 1945 года."
+ setting_no_ztr_decolonization_content: "#tooltippable #tooltip:[GetPlayer.GetTooltipTag],setting_no_ztr_decolonization_content_desc #high Отключено#!#!#!"
+ setting_no_ztr_decolonization_content_desc: "Отключить общий контент [Concept('concept_decolonization','$concept_decolonization$')] в этой кампании для более #b ванильного#! игрового процесса, ориентированного на #b завоевание мира#!."
+
+ rule_ztr_historical_content: "Исторический контент (Tech&Res)"
+ setting_allow_ztr_historical_content: "#tooltippable #tooltip:[GetPlayer.GetTooltipTag],setting_allow_ztr_historical_content_desc #high Включено#!#!#!"
+ setting_allow_ztr_historical_content_desc: "Добавить исторический контент, пока что связанный с #b Индией#!, #b Австрией#!, #b Россией/СССР#! и #b Османской империей#!."
+ setting_no_ztr_historical_content: "#tooltippable #tooltip:[GetPlayer.GetTooltipTag],setting_no_ztr_historical_content_desc #high Отключено#!#!#!"
+ setting_no_ztr_historical_content_desc: "Отключить исторический контент в этой кампании ради более #b ванильного#! игрового процесса или #b совместимости с историческими модами#!."
+
+ rule_ztr_pop_lag_fix: "Уменьшение тормозов из-за населения (Tech&Res)"
+ setting_allow_ztr_pop_lag_fix: "#tooltippable #tooltip:[GetPlayer.GetTooltipTag],setting_allow_ztr_pop_lag_fix_desc #high Включено#!#!#!"
+ setting_allow_ztr_pop_lag_fix_desc: "Это правило сокращает количество групп населения в штатах за счёт умеренной ассимиляции непризнанных культур. После 1936 года ассимиляция становится интенсивной, что может привести к некоторому дисбалансу культур и религий, но не нарушает игровые механики. Рекомендуется для длительных партий, продолжающихся за пределами XXI века."
+ setting_mid_ztr_pop_lag_fix: "#tooltippable #tooltip:[GetPlayer.GetTooltipTag],setting_mid_ztr_pop_lag_fix_desc #high Интенсивная ассимиляция после 1936 года#!#!#!"
+ setting_mid_ztr_pop_lag_fix_desc: "Это правило включает интенсивную ассимиляцию только после 1936 года, сохраняя стандартную механику ассимиляции до 1936 года."
+ setting_low_ztr_pop_lag_fix: "#tooltippable #tooltip:[GetPlayer.GetTooltipTag],setting_low_ztr_pop_lag_fix_desc #high Умеренная ассимиляция после 1936 года#!#!#!"
+ setting_low_ztr_pop_lag_fix_desc: "Это правило включает умеренную ассимиляцию только после 1936 года, сохраняя стандартную механику ассимиляции до 1936 года."
+ setting_no_ztr_pop_lag_fix: "#tooltippable #tooltip:[GetPlayer.GetTooltipTag],setting_no_ztr_pop_lag_fix_desc #high Отключено#!#!#!"
+ setting_no_ztr_pop_lag_fix_desc: "Этот вариант предназначен для тех, кто предпочитает стандартную механику ассимиляции на протяжении всей игры. (Для мощных процессоров)"
+
+# НОВОЕ 1.6
+
+rule_ztr_atom_bomb_content: "Контент #i атомной бомбы#! (Tech&Res)"
+setting_allow_ztr_atom_bomb_content: "#tooltippable #tooltip:[GetPlayer.GetTooltipTag],setting_allow_ztr_atom_bomb_content_desc #high Включено#!#!#!"
+setting_allow_ztr_atom_bomb_content_desc: "Разрешить использование #i атомной бомбы#! в этой кампании. ИИ применит ядерное оружие, только если оно ещё ни разу не использовалось. После первого применения использовать его сможет только игрок, а ИИ будет лишь защищаться от атак игрока."
+setting_no_ztr_atom_bomb_content: "#tooltippable #tooltip:[GetPlayer.GetTooltipTag],setting_no_ztr_atom_bomb_content_desc #high Отключено#!#!#!"
+setting_no_ztr_atom_bomb_content_desc: "Отключить контент #i атомной бомбы#! в этой кампании для более привычного ванильного игрового процесса."
+ rule_ztr_climate_disasters: "Климатические катастрофы (Tech&Res)"
+ setting_allow_ztr_climate_disasters: "#tooltippable #tooltip:[GetPlayer.GetTooltipTag],setting_allow_ztr_climate_disasters_desc #high Включено#!#!#!"
+ setting_allow_ztr_climate_disasters_desc: "Разрешить появление [Concept('concept_harvest_condition','$concept_harvest_condition$')], вызванных [Concept('concept_pollution','$concept_pollution$')]: экстремальной жары, мегазасух, ураганов, гигантских лесных пожаров и затоплений побережья. Их частота и разрушительная сила будут расти вместе с глобальным потеплением."
+ setting_no_ztr_climate_disasters: "#tooltippable #tooltip:[GetPlayer.GetTooltipTag],setting_no_ztr_climate_disasters_desc #high Отключено#!#!#!"
+ setting_no_ztr_climate_disasters_desc: "Отключить климатические [Concept('concept_harvest_condition','$concept_harvest_condition$')]. Глобальное потепление по-прежнему будет отслеживаться в соответствующей [Concept('concept_journal_entry','$concept_journal_entry$')], но новые катастрофы появляться не будут."
