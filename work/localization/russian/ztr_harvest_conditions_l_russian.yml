@@ -1,0 +1,40 @@
+﻿l_russian:
+ ### Глобальное потепление — климатические условия урожая ###
+
+ ztr_extreme_heatwave: "Экстремальная жара"
+ ztr_extreme_heatwave_desc: "Недели непрерывной жары, невиданной прежде за всю историю местных наблюдений. Поля высыхают, скот гибнет под открытым небом, а тяжелее всего приходится городам: кирпич и асфальт удерживают тепло даже ночью, и число умерших среди пожилых и бедных растёт."
+ ztr_megadrought: "Мегазасуха"
+ ztr_megadrought_desc: "Это не засушливый сезон, а целое засушливое десятилетие. Уровень водохранилищ опускается ниже водозаборов, колодцы приходится раз за разом углублять, а ирригационные системы, построенные для более влажного климата, теперь проводят воду, которой больше нет. Стада распродают раньше срока, потому что пастбищам нечего предложить."
+ ztr_hurricane: "Ураган"
+ ztr_hurricane_desc: "Тропический циклон, который более тёплый океан направил на побережье. Он приходит за считаные дни, а последствия устраняют неделями: разрушены портовые сооружения, железнодорожные насыпи и прибрежные поселения. Из-за потепления морей ураганы чаще достигают суши и становятся разрушительнее."
+ ztr_extreme_wildfire: "Гигантский лесной пожар"
+ ztr_extreme_wildfire_desc: "Пожар таких масштабов невозможно потушить — от него можно только спасаться бегством. Высушенная засухой древесина и разогнанный жарой ветер несут огонь быстрее, чем успевают создавать противопожарные просеки, а дым перекрывает дороги и поражает лёгкие за сотни километров от очага."
+ ztr_coastal_flooding: "Затопление побережья"
+
+ ### Модификаторы смягчения последствий ###
+
+ state_harvest_condition_ztr_extreme_heatwave_impact_mult: "Влияние условия урожая «[GetHarvestConditionType('ztr_extreme_heatwave').GetName]»"
+ state_harvest_condition_ztr_extreme_heatwave_impact_mult_desc: "Увеличение или уменьшение воздействия экстремальной жары."
+ state_harvest_condition_ztr_extreme_heatwave_duration_mult: "Продолжительность условия урожая «[GetHarvestConditionType('ztr_extreme_heatwave').GetName]»"
+ state_harvest_condition_ztr_extreme_heatwave_duration_mult_desc: "Увеличение или уменьшение продолжительности экстремальной жары."
+ state_harvest_condition_ztr_megadrought_impact_mult: "Влияние условия урожая «[GetHarvestConditionType('ztr_megadrought').GetName]»"
+ state_harvest_condition_ztr_megadrought_impact_mult_desc: "Увеличение или уменьшение воздействия мегазасухи."
+ state_harvest_condition_ztr_megadrought_duration_mult: "Продолжительность условия урожая «[GetHarvestConditionType('ztr_megadrought').GetName]»"
+ state_harvest_condition_ztr_megadrought_duration_mult_desc: "Увеличение или уменьшение продолжительности мегазасухи."
+ state_harvest_condition_ztr_hurricane_impact_mult: "Влияние условия урожая «[GetHarvestConditionType('ztr_hurricane').GetName]»"
+ state_harvest_condition_ztr_hurricane_impact_mult_desc: "Увеличение или уменьшение воздействия ураганов."
+ state_harvest_condition_ztr_hurricane_duration_mult: "Продолжительность условия урожая «[GetHarvestConditionType('ztr_hurricane').GetName]»"
+ state_harvest_condition_ztr_hurricane_duration_mult_desc: "Увеличение или уменьшение продолжительности ураганов."
+ state_harvest_condition_ztr_extreme_wildfire_impact_mult: "Влияние условия урожая «[GetHarvestConditionType('ztr_extreme_wildfire').GetName]»"
+ state_harvest_condition_ztr_extreme_wildfire_impact_mult_desc: "Увеличение или уменьшение воздействия гигантских лесных пожаров."
+ state_harvest_condition_ztr_extreme_wildfire_duration_mult: "Продолжительность условия урожая «[GetHarvestConditionType('ztr_extreme_wildfire').GetName]»"
+ state_harvest_condition_ztr_extreme_wildfire_duration_mult_desc: "Увеличение или уменьшение продолжительности гигантских лесных пожаров."
+ state_harvest_condition_ztr_coastal_flooding_impact_mult: "Влияние условия урожая «[GetHarvestConditionType('ztr_coastal_flooding').GetName]»"
+ state_harvest_condition_ztr_coastal_flooding_impact_mult_desc: "Увеличение или уменьшение воздействия затопления побережья."
+ state_harvest_condition_ztr_coastal_flooding_duration_mult: "Продолжительность условия урожая «[GetHarvestConditionType('ztr_coastal_flooding').GetName]»"
+ state_harvest_condition_ztr_coastal_flooding_duration_mult_desc: "Увеличение или уменьшение продолжительности затопления побережья."
+
+ modifier_cyclone_relief_desc: "Экстренное восстановление, предоставление убежища и помощь пострадавшим прибрежным районам временно увеличивают нагрузку на государственную казну."
+ modifier_mega_flood_relief_desc: "Строительство и укрепление морских дамб требует чрезвычайно больших государственных расходов."
+
+ ztr_coastal_flooding_desc: "Продолжительное затопление побережья на годы нарушает работу ферм, поселений и инфраструктуры. Солёная вода и повторяющиеся штормовые нагоны мешают быстрому восстановлению; экстренная помощь может уменьшить дальнейший ущерб, но не прекращает само бедствие." # UPDATED
