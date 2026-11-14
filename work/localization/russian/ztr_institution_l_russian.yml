@@ -1,0 +1,7 @@
+﻿l_russian:
+# Рабочий перевод Tech & Res. Ключи и игровые переменные сохранены.
+
+institution_environmental_policy: "Экологическая политика"
+institution_environmental_policy_desc: "Регулирование выбросов, охрана природы и активное восстановление экосистем."
+country_institution_environmental_policy_max_investment_add: "Максимальный объём инвестиций в [concept_institution] «$institution_environmental_policy$»"
+country_institution_environmental_policy_max_investment_add_desc: "Бонус или штраф к максимальному уровню инвестиций в [concept_institution] «$institution_environmental_policy$»."
