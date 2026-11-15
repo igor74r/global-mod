@@ -85,6 +85,7 @@ def main():
     a.report.parent.mkdir(parents=True,exist_ok=True)
     a.report.write_text("\n".join(lines)+"\n",encoding="utf-8")
     print("\n".join(lines[:11]))
+    for item in duplicate_keys: print("DUPLICATE_RUSSIAN_KEY", item)
     if script_errors or missing_required: raise SystemExit(1)
 
 if __name__=="__main__": main()
