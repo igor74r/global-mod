@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Assemble a best-effort Victoria 3 combined mod from the three source archives."""
+"""Assemble and validate a Victoria 3 combined mod from the three source archives."""
 from __future__ import annotations
 import argparse, csv, hashlib, os, re, shutil, sys, zipfile
 from pathlib import Path
