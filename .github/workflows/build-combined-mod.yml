@@ -6,6 +6,7 @@ on:
       - "tools/merge_sources.py"
       - "tools/validate_merge.py"
       - "work/localization/russian/**"
+      - "work/merged-mod/**"
       - ".github/workflows/build-combined-mod.yml"
   workflow_dispatch:
 permissions:
