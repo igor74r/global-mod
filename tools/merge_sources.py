@@ -44,8 +44,23 @@ def parse_loc_line(line: str):
     if not m: return None
     return m.group(2),line
 
+def parse_loc_value(line: str):
+    m=re.match(r'^\s*([A-Za-z0-9_.:-]+):(\d*)\s*(.*)$',line)
+    if not m: return None
+    return m.group(1),m.group(3)
+
+def english_values(src: Path, rel: Path) -> dict[str,str]:
+    name=rel.name.replace("_l_russian.yml","_l_english.yml")
+    p=src/"localization"/"english"/rel.parent/name
+    values={}
+    if p.is_file():
+        for line in p.read_text(encoding="utf-8-sig").splitlines():
+            item=parse_loc_value(line)
+            if item: values[item[0]]=item[1]
+    return values
+
 def merge_localization_files(dst: Path, sources: list[Path], conflicts: list):
-    # Keep the first existing translation for each key; append only genuinely missing keys.
+    # Add missing keys and replace only English placeholders; never overwrite an existing translation.
     for src in sources:
         locroot=src/"localization"/"russian"
         if not locroot.is_dir(): continue
@@ -53,25 +68,35 @@ def merge_localization_files(dst: Path, sources: list[Path], conflicts: list):
             if not p.is_file(): continue
             rel=p.relative_to(locroot)
             target=dst/rel
+            incoming=p.read_text(encoding="utf-8-sig").splitlines()
+            english=english_values(src,rel)
             if not target.exists():
                 target.parent.mkdir(parents=True,exist_ok=True)
                 shutil.copy2(p,target)
                 continue
             existing=target.read_text(encoding="utf-8-sig").splitlines()
-            keys=set()
-            for line in existing:
-                parsed=parse_loc_line(line)
-                if parsed: keys.add(parsed[0])
-            additions=[]
-            for line in p.read_text(encoding="utf-8-sig").splitlines():
-                parsed=parse_loc_line(line)
-                if parsed and parsed[0] not in keys:
-                    additions.append(line); keys.add(parsed[0])
-            if additions:
-                with target.open("a",encoding="utf-8",newline="\n") as f:
-                    if existing and existing[-1].strip(): f.write("\n")
-                    f.write("\n".join(additions)+"\n")
-                conflicts.append(("localization-merged",str(rel),str(target),"added missing keys"))
+            positions={}; values={}
+            for i,line in enumerate(existing):
+                item=parse_loc_value(line)
+                if item and item[0] not in positions:
+                    positions[item[0]]=i; values[item[0]]=item[1]
+            additions=[]; replaced=0
+            for line in incoming:
+                item=parse_loc_value(line)
+                if not item: continue
+                key,value=item
+                if key not in positions:
+                    positions[key]=len(existing)+len(additions)
+                    values[key]=value
+                    additions.append(line)
+                elif key in english and values[key]==english[key] and value!=english[key]:
+                    existing[positions[key]]=line
+                    values[key]=value
+                    replaced+=1
+            if additions or replaced:
+                if additions and existing and existing[-1].strip(): existing.append("")
+                target.write_text("\n".join(existing+additions)+"\n",encoding="utf-8")
+                conflicts.append(("localization-merged",str(rel),str(target),f"added {len(additions)} missing keys; replaced {replaced} English placeholders"))
 
 def main():
     ap=argparse.ArgumentParser()
@@ -98,7 +123,7 @@ def main():
     copy_source(tr,a.out,"tech-and-res",conflicts)
     # Merge Russian localization by key: preserve Morgenröte's existing values and append only missing keys from the other mods.
     merge_localization_files(a.out/"localization"/"russian", [mr,bpm,tr], conflicts)
-    # Overlay user-prepared localization without deleting or replacing existing Russian strings.
+    # Overlay user-prepared localization: preserve real Russian strings but replace English placeholders.
     prepared=a.existing/"work"/"localization"/"russian"
     if prepared.is_dir():
         for p in prepared.glob("*_l_russian.yml"):
@@ -107,15 +132,27 @@ def main():
             if not target.exists(): shutil.copy2(p,target)
             else:
                 old=target.read_text(encoding="utf-8-sig").splitlines()
-                keys={x[0] for x in (parse_loc_line(z) for z in old) if x}
-                adds=[]
-                for line in p.read_text(encoding="utf-8-sig").splitlines():
-                    q=parse_loc_line(line)
-                    if q and q[0] not in keys: adds.append(line); keys.add(q[0])
-                if adds:
-                    with target.open("a",encoding="utf-8",newline="\n") as f:
-                        if old and old[-1].strip(): f.write("\n")
-                        f.write("\n".join(adds)+"\n")
+                positions={}; values={}
+                for idx,line in enumerate(old):
+                    item=parse_loc_value(line)
+                    if item and item[0] not in positions:
+                        positions[item[0]]=idx; values[item[0]]=item[1]
+                prepared_lines=p.read_text(encoding="utf-8-sig").splitlines()
+                english={}
+                for source in [mr,bpm,tr]:
+                    for key,value in english_values(source,Path(p.name)).items():
+                        english.setdefault(key,set()).add(value)
+                adds=[]; replaced=0
+                for line in prepared_lines:
+                    item=parse_loc_value(line)
+                    if not item: continue
+                    key,value=item
+                    if key not in positions:
+                        positions[key]=len(old)+len(adds); values[key]=value; adds.append(line)
+                    elif values[key] in english.get(key,set()) and value not in english.get(key,set()):
+                        old[positions[key]]=line; values[key]=value; replaced+=1
+                if adds and old and old[-1].strip(): old.append("")
+                if adds or replaced: target.write_text("\n".join(old+adds)+"\n",encoding="utf-8")
     # Preserve the hand-merged files and documentation already created in the working branch.
     manual=a.existing/"work"/"merged-mod"
     if manual.is_dir():
