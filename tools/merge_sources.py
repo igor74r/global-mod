@@ -121,6 +121,9 @@ def main():
     if manual.is_dir():
         for p in manual.rglob("*"):
             if p.is_file():
+                # Keep project notes and build diagnostics in the repository, not inside the game mod.
+                if p.name in {"README.md", "MERGE_NOTES.md", "BUILD_REPORT.md", "merge-conflicts.csv"}:
+                    continue
                 rel=p.relative_to(manual); target=a.out/rel
                 target.parent.mkdir(parents=True,exist_ok=True); shutil.copy2(p,target)
     # Create a launcher descriptor. Morgenröte's CMF dependency is retained.
