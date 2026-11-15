@@ -47,9 +47,11 @@ def parse_loc_line(line: str):
 def merge_localization_files(dst: Path, sources: list[Path], conflicts: list):
     # Keep the first existing translation for each key; append only genuinely missing keys.
     for src in sources:
-        for p in src.rglob("*_l_russian.yml"):
+        locroot=src/"localization"/"russian"
+        if not locroot.is_dir(): continue
+        for p in locroot.rglob("*_l_russian.yml"):
             if not p.is_file(): continue
-            rel=p.relative_to(src)
+            rel=p.relative_to(locroot)
             target=dst/rel
             if not target.exists():
                 target.parent.mkdir(parents=True,exist_ok=True)
@@ -94,6 +96,8 @@ def main():
     copy_source(mr,a.out,"morgenroete",conflicts,base=True)
     copy_source(bpm,a.out,"better-politics-full",conflicts)
     copy_source(tr,a.out,"tech-and-res",conflicts)
+    # Merge Russian localization by key: preserve Morgenröte's existing values and append only missing keys from the other mods.
+    merge_localization_files(a.out/"localization"/"russian", [mr,bpm,tr], conflicts)
     # Overlay user-prepared localization without deleting or replacing existing Russian strings.
     prepared=a.existing/"work"/"localization"/"russian"
     if prepared.is_dir():
