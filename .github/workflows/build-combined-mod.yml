@@ -10,6 +10,9 @@ on:
 permissions:
   contents: write
   actions: read
+concurrency:
+  group: combined-mod-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -54,7 +57,7 @@ jobs:
           supported_version="1.15.*"
           EOF
           cd dist
-          zip -qr -0 Global-Mod.zip Global-Mod Global-Mod.mod
+          zip -qr -1 Global-Mod.zip Global-Mod Global-Mod.mod
           ls -lh Global-Mod.zip Global-Mod.mod merge-conflicts.csv
       - name: Create build report
         run: |
@@ -89,7 +92,7 @@ jobs:
           if [ "$size" -lt 1900000000 ]; then
             gh release upload source-archives -R "$GITHUB_REPOSITORY" dist/Global-Mod.zip dist/merge-conflicts.csv dist/BUILD_REPORT.md dist/VALIDATION_REPORT.md --clobber
           else
-            split -b 900M dist/Global-Mod.zip dist/Global-Mod.zip.part-
+            split -b 1000M dist/Global-Mod.zip dist/Global-Mod.zip.part-
             for file in dist/Global-Mod.zip.part-*; do
               gh release upload source-archives -R "$GITHUB_REPOSITORY" "$file" --clobber
             done
