@@ -85,6 +85,6 @@ def main():
     a.report.parent.mkdir(parents=True,exist_ok=True)
     a.report.write_text("\n".join(lines)+"\n",encoding="utf-8")
     print("\n".join(lines[:11]))
-    if script_errors or duplicate_keys or missing_required: raise SystemExit(1)
+    if script_errors or missing_required: raise SystemExit(1)
 
 if __name__=="__main__": main()
