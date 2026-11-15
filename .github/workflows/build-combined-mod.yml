@@ -1,0 +1,69 @@
+name: Build combined Victoria 3 mod
+on:
+  push:
+    branches: [merge-work]
+    paths:
+      - "tools/merge_sources.py"
+      - ".github/workflows/build-combined-mod.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - name: Checkout working branch
+        uses: actions/checkout@v4
+        with:
+          ref: merge-work
+      - name: Download source archives
+        env:
+          GH_TOKEN: \${{ github.token }}
+        run: |
+          mkdir -p /tmp/modsrc
+          gh release download source-archives -R "\${GITHUB_REPOSITORY}" -D /tmp/modsrc \
+            -p "Morgenroete-Beta-Main.zip" \
+            -p "Better-Politics-Mod-Vic-3-main.zip" \
+            -p "tech-and-res-main.zip"
+      - name: Extract archives
+        run: |
+          mkdir -p /tmp/modsrc/mr /tmp/modsrc/bpm /tmp/modsrc/tr
+          unzip -q /tmp/modsrc/Morgenroete-Beta-Main.zip -d /tmp/modsrc/mr
+          unzip -q /tmp/modsrc/Better-Politics-Mod-Vic-3-main.zip -d /tmp/modsrc/bpm
+          unzip -q /tmp/modsrc/tech-and-res-main.zip -d /tmp/modsrc/tr
+      - name: Assemble sources and retain conflicting variants
+        run: |
+          python3 tools/merge_sources.py \
+            --morgenroete /tmp/modsrc/mr \
+            --better-politics /tmp/modsrc/bpm \
+            --tech-res /tmp/modsrc/tr \
+            --existing "$GITHUB_WORKSPACE" \
+            --out "$GITHUB_WORKSPACE/dist/Global-Mod" \
+            --report "$GITHUB_WORKSPACE/dist/merge-conflicts.csv"
+      - name: Package mod
+        run: |
+          cd dist
+          zip -qr -1 Global-Mod.zip Global-Mod
+          ls -lh Global-Mod.zip merge-conflicts.csv
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Global-Mod-Victoria-3
+          path: |
+            dist/Global-Mod.zip
+            dist/merge-conflicts.csv
+          compression-level: 0
+          retention-days: 30
+      - name: Publish package to source-archives release
+        env:
+          GH_TOKEN: \${{ github.token }}
+        run: |
+          size=$(stat -c%s dist/Global-Mod.zip)
+          if [ "$size" -lt 1900000000 ]; then
+            gh release upload source-archives -R "$GITHUB_REPOSITORY" dist/Global-Mod.zip dist/merge-conflicts.csv --clobber
+          else
+            split -b 1800M dist/Global-Mod.zip dist/Global-Mod.zip.part-
+            gh release upload source-archives -R "$GITHUB_REPOSITORY" dist/Global-Mod.zip.part-* dist/merge-conflicts.csv --clobber
+          fi
