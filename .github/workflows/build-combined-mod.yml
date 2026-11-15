@@ -44,9 +44,14 @@ jobs:
             --report "$GITHUB_WORKSPACE/dist/merge-conflicts.csv"
       - name: Package mod
         run: |
+          cat > dist/Global-Mod.mod <<'EOF'
+          name="Global Mod — Morgenröte + Better Politics + Tech & Res"
+          path="mod/Global-Mod"
+          supported_version="1.15.*"
+          EOF
           cd dist
-          zip -qr -1 Global-Mod.zip Global-Mod
-          ls -lh Global-Mod.zip merge-conflicts.csv
+          zip -qr -1 Global-Mod.zip Global-Mod Global-Mod.mod
+          ls -lh Global-Mod.zip Global-Mod.mod merge-conflicts.csv
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
