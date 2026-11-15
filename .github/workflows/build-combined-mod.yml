@@ -52,6 +52,36 @@ jobs:
           cd dist
           zip -qr -1 Global-Mod.zip Global-Mod Global-Mod.mod
           ls -lh Global-Mod.zip Global-Mod.mod merge-conflicts.csv
+      - name: Save conflict report for review
+        run: |
+          mkdir -p work/merged-mod
+          cp dist/merge-conflicts.csv work/merged-mod/merge-conflicts.csv
+          python3 - <<'PY'
+          import csv, pathlib
+          p=pathlib.Path("dist/merge-conflicts.csv")
+          with p.open(encoding="utf-8", newline="") as f:
+              rows=list(csv.DictReader(f))
+          counts={}
+          for row in rows:
+              counts[row.get("source","unknown")]=counts.get(row.get("source","unknown"),0)+1
+          lines=[
+              "# Build report",
+              "",
+              f"- Files in assembled mod: {sum(1 for x in pathlib.Path('dist/Global-Mod').rglob('*') if x.is_file())}",
+              f"- Merge/conflict records: {len(rows)}",
+              "",
+              "## Records by source",
+              "",
+          ]
+          lines += [f"- {k}: {v}" for k,v in sorted(counts.items())]
+          lines += ["", "This is an automated merge report, not proof of in-game compatibility."]
+          pathlib.Path("work/merged-mod/BUILD_REPORT.md").write_text("\\n".join(lines)+"\\n",encoding="utf-8")
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add work/merged-mod/merge-conflicts.csv work/merged-mod/BUILD_REPORT.md
+          git commit -m "Save combined mod conflict report" || echo "No report changes"
+          git push origin HEAD:merge-work
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
