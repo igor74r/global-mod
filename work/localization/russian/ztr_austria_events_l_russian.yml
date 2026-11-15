@@ -1,0 +1,104 @@
+l_russian:
+
+austrian_empire_collapse.1.t: "Распад Австрийской империи"
+austrian_empire_collapse.1.d: "[ROOT.GetCountry.GetAdjective] империя, веками господствовавшая в Центральной Европе, переживает глубокий кризис. Хрупкое равновесие нашей державы рухнуло. Многие страны объявили о независимости, и сердце империи лежит в руинах. Вена застыла между грохотом войны и тишиной распада. Старый порядок умирает: примет ли он последний бой или будет предан земле с достоинством?"
+austrian_empire_collapse.1.a: "Сначала мы должны вернуть [SCOPE.sCountry('collapse_hungary_scope').GetName]!"
+austrian_empire_collapse.1.b: "Сначала мы должны вернуть [SCOPE.sCountry('collapse_czech_scope').GetName]!"
+austrian_empire_collapse.1.c: "Сражаться с обоими!"
+austrian_empire_collapse.1.e: "Сокрушить их всех!"
+austrian_empire_collapse.1.f: "Принять новую реальность."
+
+austrian_empire_collapse.2.t: "Единство Австрийской империи восстановлено"
+austrian_empire_collapse.2.d: "Несмотря ни на что, [ROOT.GetCountry.GetAdjective] империя устояла. Благодаря умелому сочетанию дипломатии и решительной силы кризис удалось преодолеть. Старые узы восстановлены, и из пепла смуты возрождается новое чувство имперского единства. [ROOT.GetCountry.GetName] выстояла — и будет существовать вечно!"
+austrian_empire_collapse.2.a: "Да здравствуют [ROOT.GetCountry.GetName] и [ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle] [ROOT.GetCountry.GetRuler.GetFullName]!"
+
+austrian_empire_collapse.3.t: "Мадьяры против немцев"
+austrian_empire_collapse.3.d: "Хрупкая этническая ткань империи начинает рваться: венгерские представители требуют признать мадьярский язык равноправным с немецким в государственных делах. Одни считают это угрозой единству империи, другие — справедливым требованием, которое слишком долго игнорировали."
+austrian_empire_collapse.3.a: "Только немецкий — или ничего!"
+austrian_empire_collapse.3.b: "Признать мадьярский язык в региональном управлении."
+
+austrian_empire_collapse.4.t: "Венгерские восстания"
+austrian_empire_collapse.4.d: "Недовольство, копившееся в Венгрии, переросло в открытое восстание. Националистические ополчения занимают города, нарушают работу железных дорог и поднимают знамёна независимости. Имперские гарнизоны осаждены и ждут приказов из колеблющейся столицы."
+austrian_empire_collapse.4.a: "Ввести войска!"
+austrian_empire_collapse.4.b: "Предложить реформы и автономию."
+
+austrian_empire_collapse.5.t: "Равные права для венгров"
+austrian_empire_collapse.5.d: "Добившись ранее некоторого признания, венгерская делегация теперь требует полного равноправия в рамках имперского законодательства. Её требования разносятся по всей многонациональной империи: либо Вена уступит, либо давление может стать невыносимым."
+austrian_empire_collapse.5.a: "Пусть привилегии останутся без изменений!"
+austrian_empire_collapse.5.b: "Предоставить Венгрии равные права."
+
+austrian_empire_collapse.6.t: "Независимость Венгрии"
+austrian_empire_collapse.6.d: "Не дождавшись решения, Венгрия провозгласила полную независимость и разорвала связи с Веной. Этот смелый шаг пошатнул основы имперской легитимности и создал опасный прецедент для остальных народов. Попытается ли Австрия восстановить свою власть или смирится с распадом?"
+austrian_empire_collapse.6.a: "Подавить мятеж!"
+austrian_empire_collapse.6.b: "Раздавить их — мы и так слишком долго потакали им!"
+austrian_empire_collapse.6.c: "Отпустить Венгрию."
+
+austrian_empire_collapse.7.t: "Триест — гавань Центральной Европы"
+austrian_empire_collapse.7.d: "Триест, или Триесте по-итальянски, — ворота Центральной Европы к Адриатике. Имперские стратеги считают его ключом к сохранению экономического и военно-морского влияния Австрии. Превращение города в центр промышленности и морской мощи может обеспечить выживание империи — если удастся выделить необходимые средства."
+austrian_empire_collapse.7.a: "Вложить средства в порт и укрепить его."
+austrian_empire_collapse.7.b: "Мы не можем позволить себе такую роскошь."
+
+austrian_empire_collapse.8.t: "Италия волнуется"
+austrian_empire_collapse.8.d: "В Ломбардо-Венеции крепнет национализм. Воодушевлённые движением за объединение Италии, местные лидеры тайно готовят восстание. Напряжённость растёт, и на мощёных улицах Милана и Венеции имперский флаг встречают скорее с неприязнью, чем с верностью."
+austrian_empire_collapse.8.a: "Ввести армию!"
+austrian_empire_collapse.8.b: "Предложить реформы и автономию."
+austrian_empire_collapse.8.c: "Вернуть провинции государству [SCOPE.sCountry('stirs_italy_scope').GetName]."
+
+austrian_empire_collapse.9.t: "Галиция — житница империи"
+austrian_empire_collapse.9.d: "Галиция кормит империю, но дорогой ценой. Особенно теперь, когда сельское хозяйство западных регионов стремительно индустриализируется. Имперские налоги доводят крестьян до нищеты, пока их зерно украшает венские столы. Терпение жителей на исходе, и некоторые уже требуют автономии — или чего-то худшего."
+austrian_empire_collapse.9.a: "Выжать из Галиции ещё больше."
+austrian_empire_collapse.9.b: "Субсидировать галицийское сельское хозяйство."
+
+austrian_empire_collapse.10.t: "Чехи требуют равноправия"
+austrian_empire_collapse.10.d: "Воодушевлённые решительностью Венгрии, чешская интеллигенция и буржуазия теперь требуют гражданского и политического равноправия. Долгое время считавшиеся народом второго сорта, они стремятся занять новое место в обновлённой и более справедливой империи — или за её пределами."
+austrian_empire_collapse.10.a: "Мы не будем расширять привилегии."
+austrian_empire_collapse.10.b: "Предоставить чехам гражданское равноправие."
+
+austrian_empire_collapse.11.t: "Словацкий вопрос"
+austrian_empire_collapse.11.d: "Оказавшись между растущим влиянием чехов и венгров, словаки начинают заявлять о собственной самобытности. И Прага, и Будапешт претендуют на их лояльность, а Вена опасается, что новая линия раскола вызовет очередную волну потрясений."
+austrian_empire_collapse.11.a: "Поддержать чехов."
+austrian_empire_collapse.11.b: "Поддержать венгров."
+
+austrian_empire_collapse.12.t: "Независимость Чехословакии"
+austrian_empire_collapse.12.d: "Прага решительно провозгласила создание суверенной Чехословацкой республики. Власть империи над славянскими провинциями ослабевает: революционеры собирают сторонников, а иностранные державы внимательно следят за следующим шагом Австрии."
+austrian_empire_collapse.12.a: "Подавить мятеж!"
+austrian_empire_collapse.12.b: "Наказать мятежников — у них уже были все права!"
+austrian_empire_collapse.12.c: "Признать Чехословакию."
+
+austrian_empire_collapse.13.t: "Шёпот о югославском союзе"
+austrian_empire_collapse.13.d: "От кафе Любляны до аудиторий Сараева южнославянские интеллектуалы говорят о единстве — об одном югославском народе, связанном общим языком и наследием. Для одних это утопические мечты, для других — экзистенциальная угроза господству Австрии на Балканах."
+austrian_empire_collapse.13.a: "Запретить эти опасные идеи!"
+austrian_empire_collapse.13.b: "Разрешить открытые дискуссии."
+
+austrian_empire_collapse.14.t: "Трансильванский вопрос"
+austrian_empire_collapse.14.d: "В Карпатах нарастает напряжённость. Румынские националисты призывают жителей Трансильвании объединиться с Румынией, ссылаясь на исторические и этнические права. Если их требования останутся без ответа, империя может пережить ещё один необратимый раскол."
+austrian_empire_collapse.14.a: "Ввести войска!"
+austrian_empire_collapse.14.b: "Предоставить широкую автономию."
+austrian_empire_collapse.14.c: "Передать Трансильванию Румынии."
+
+austrian_empire_collapse.15.t: "Польский вопрос"
+austrian_empire_collapse.15.d: "В Галиции вновь вспыхнул националистический подъём: польские активисты осуждают пренебрежение со стороны империи и требуют объединения с независимой Польшей. По мере роста напряжённости Вена сталкивается со знакомым выбором: подавить движение силой, предоставить самоуправление или вовсе отказаться от Галиции."
+austrian_empire_collapse.15.a: "Ввести войска!"
+austrian_empire_collapse.15.b: "Предоставить широкую автономию."
+austrian_empire_collapse.15.c: "Передать Галицию государству [SCOPE.sCountry('polish_question_scope').GetName]."
+
+austrian_empire_collapse.16.t: "Предложение по Воеводине"
+austrian_empire_collapse.16.d: "Королевство Сербия официально потребовало передать ему Воеводину, ссылаясь на этнические связи и неэффективное имперское управление. Ослабление империи и нестабильность в регионе делают уступку возможным способом ослабить кризис — но она может побудить другие народы выдвинуть аналогичные требования."
+austrian_empire_collapse.16.a: "Принять требование государства [SCOPE.sCountry('serbia_proposal_scope').GetName]."
+austrian_empire_collapse.16.b: "Отклонить претензию."
+
+austrian_empire_collapse.17.t: "Краковское соглашение"
+austrian_empire_collapse.17.d: "Польские дипломаты предложили присоединить Краков к польскому государству в обмен на лояльность и сотрудничество. Вольный город долго пользовался автономией под защитой империи, но волна национализма грозит сделать подобные соглашения пережитком прошлого."
+austrian_empire_collapse.17.a: "Поддержать присоединение [SCOPE.sCountry('krakow_agreement_scope').GetName] к Польше."
+austrian_empire_collapse.17.b: "Отклонить предложение и сохранить контроль."
+
+austrian_empire_collapse_minor_progress_tt: "Стабильность [ROOT.GetCountry.GetAdjective] империи получает #tooltippable;positive_value;TOOLTIP:expedition_progress_explanation_tt небольшой прогресс#!"
+austrian_empire_collapse_moderate_progress_tt: "Стабильность [ROOT.GetCountry.GetAdjective] империи получает #tooltippable;positive_value;TOOLTIP:expedition_progress_explanation_tt прогресс#!"
+austrian_empire_collapse_great_progress_tt: "Стабильность [ROOT.GetCountry.GetAdjective] империи получает значительный #tooltippable;positive_value;TOOLTIP:expedition_progress_explanation_tt прогресс#!"
+austrian_empire_collapse_lose_minor_progress_tt: "Стабильность [ROOT.GetCountry.GetAdjective] империи теряет #tooltippable;negative_value;TOOLTIP:expedition_peril_explanation_tt небольшой прогресс#!"
+austrian_empire_collapse_lose_moderate_progress_tt: "Стабильность [ROOT.GetCountry.GetAdjective] империи теряет #tooltippable;negative_value;TOOLTIP:expedition_peril_explanation_tt прогресс#!"
+austrian_empire_collapse_lose_great_progress_tt: "Стабильность [ROOT.GetCountry.GetAdjective] империи теряет значительный #tooltippable;negative_value;TOOLTIP:expedition_peril_explanation_tt прогресс#!"
+
+austrian_empire_collapse.18.t: "Распад Австрийской империи (отладка)"
+austrian_empire_collapse.18.d: "Отладочное событие: запускает дневниковую запись о распаде Австрийской империи."
+austrian_empire_collapse.18.a: "Начать дневниковую запись"
