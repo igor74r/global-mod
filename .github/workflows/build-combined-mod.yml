@@ -43,6 +43,9 @@ jobs:
             --existing "$GITHUB_WORKSPACE" \
             --out "$GITHUB_WORKSPACE/dist/Global-Mod" \
             --report "$GITHUB_WORKSPACE/dist/merge-conflicts.csv"
+      - name: Run static validation
+        run: |
+          python3 tools/validate_merge.py --mod dist/Global-Mod --report dist/VALIDATION_REPORT.md
       - name: Package mod
         run: |
           cat > dist/Global-Mod.mod <<'EOF'
@@ -75,6 +78,7 @@ jobs:
             dist/Global-Mod.zip
             dist/merge-conflicts.csv
             dist/BUILD_REPORT.md
+            dist/VALIDATION_REPORT.md
           compression-level: 0
           retention-days: 30
       - name: Publish package to source-archives release
@@ -83,7 +87,7 @@ jobs:
         run: |
           size=$(stat -c%s dist/Global-Mod.zip)
           if [ "$size" -lt 1900000000 ]; then
-            gh release upload source-archives -R "$GITHUB_REPOSITORY" dist/Global-Mod.zip dist/merge-conflicts.csv dist/BUILD_REPORT.md --clobber
+            gh release upload source-archives -R "$GITHUB_REPOSITORY" dist/Global-Mod.zip dist/merge-conflicts.csv dist/BUILD_REPORT.md dist/VALIDATION_REPORT.md --clobber
           else
             split -b 1800M dist/Global-Mod.zip dist/Global-Mod.zip.part-
             gh release upload source-archives -R "$GITHUB_REPOSITORY" dist/Global-Mod.zip.part-* dist/merge-conflicts.csv dist/BUILD_REPORT.md --clobber
