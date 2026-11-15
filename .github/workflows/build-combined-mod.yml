@@ -99,3 +99,9 @@ jobs:
             done
             gh release upload source-archives -R "$GITHUB_REPOSITORY" dist/merge-conflicts.csv dist/BUILD_REPORT.md dist/VALIDATION_REPORT.md --clobber
           fi
+          # Remove obsolete split parts left by an earlier, larger archive.
+          while IFS= read -r asset; do
+            if [ ! -f "dist/$asset" ]; then
+              gh release delete-asset source-archives "$asset" -R "$GITHUB_REPOSITORY" --yes || true
+            fi
+          done < <(gh release view source-archives -R "$GITHUB_REPOSITORY" --json assets --jq '.assets[].name | select(startswith("Global-Mod.zip.part-"))')
