@@ -20,10 +20,10 @@ jobs:
           ref: merge-work
       - name: Download source archives
         env:
-          GH_TOKEN: \${{ github.token }}
+          GH_TOKEN: ${{ github.token }}
         run: |
           mkdir -p /tmp/modsrc
-          gh release download source-archives -R "\${GITHUB_REPOSITORY}" -D /tmp/modsrc \
+          gh release download source-archives -R "${GITHUB_REPOSITORY}" -D /tmp/modsrc \
             -p "Morgenroete-Beta-Main.zip" \
             -p "Better-Politics-Mod-Vic-3-main.zip" \
             -p "tech-and-res-main.zip"
@@ -63,7 +63,7 @@ jobs:
           retention-days: 30
       - name: Publish package to source-archives release
         env:
-          GH_TOKEN: \${{ github.token }}
+          GH_TOKEN: ${{ github.token }}
         run: |
           size=$(stat -c%s dist/Global-Mod.zip)
           if [ "$size" -lt 1900000000 ]; then
