@@ -89,6 +89,9 @@ jobs:
           if [ "$size" -lt 1900000000 ]; then
             gh release upload source-archives -R "$GITHUB_REPOSITORY" dist/Global-Mod.zip dist/merge-conflicts.csv dist/BUILD_REPORT.md dist/VALIDATION_REPORT.md --clobber
           else
-            split -b 1800M dist/Global-Mod.zip dist/Global-Mod.zip.part-
-            gh release upload source-archives -R "$GITHUB_REPOSITORY" dist/Global-Mod.zip.part-* dist/merge-conflicts.csv dist/BUILD_REPORT.md --clobber
+            split -b 900M dist/Global-Mod.zip dist/Global-Mod.zip.part-
+            for file in dist/Global-Mod.zip.part-*; do
+              gh release upload source-archives -R "$GITHUB_REPOSITORY" "$file" --clobber
+            done
+            gh release upload source-archives -R "$GITHUB_REPOSITORY" dist/merge-conflicts.csv dist/BUILD_REPORT.md dist/VALIDATION_REPORT.md --clobber
           fi
