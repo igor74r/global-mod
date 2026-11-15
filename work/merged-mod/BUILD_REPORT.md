@@ -1,0 +1,1 @@
+# Build report\n\n- Files in assembled mod: 16006\n- Merge/conflict records: 77\n\n## Records by source\n\n- better-politics-full: 3\n- tech-and-res: 74\n\nThis is an automated merge report, not proof of in-game compatibility.\n
