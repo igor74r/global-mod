@@ -50,7 +50,7 @@ jobs:
           supported_version="1.15.*"
           EOF
           cd dist
-          zip -qr -1 Global-Mod.zip Global-Mod Global-Mod.mod
+          zip -qr -0 Global-Mod.zip Global-Mod Global-Mod.mod
           ls -lh Global-Mod.zip Global-Mod.mod merge-conflicts.csv
       - name: Save conflict report for review
         run: |
