@@ -1,0 +1,85 @@
+l_russian:
+
+# Европейская федерация
+EUF: "Европейская федерация"
+EUF_ADJ: "Европейский"
+EUF_DEF: "Европейская федерация"
+dyn_c_european_commune: "Европейская коммуна"
+dyn_c_european_commune_adj: "Европейский"
+dyn_c_european_imperium: "Европейская империя"
+dyn_c_european_imperium_adj: "Европейский"
+
+# Евразийский союз
+EAU: "Евразийский союз"
+EAU_ADJ: "Евразийский"
+EAU_DEF: "Евразийский союз"
+dyn_c_eurasian_commune: "Евразийская коммуна"
+dyn_c_eurasian_commune_adj: "Евразийский"
+dyn_c_eurasian_imperium: "Евразийская империя"
+dyn_c_eurasian_imperium_adj: "Евразийский"
+
+# Арабская федерация
+ARF: "Арабская федерация"
+ARF_ADJ: "Арабский"
+ARF_DEF: "Арабская федерация"
+dyn_c_arab_commune: "Арабская коммуна"
+dyn_c_arab_commune_adj: "Арабский"
+dyn_c_arab_imperium: "Исламский халифат"
+dyn_c_arab_imperium_adj: "Халифатский"
+
+# Союз государств Юго-Восточной Азии
+SEA: "Союз Юго-Восточной Азии"
+SEA_ADJ: "Юго-Восточноазиатский"
+SEA_DEF: "Союз государств Юго-Восточной Азии"
+dyn_c_southeast_asian_commune: "Юго-Восточноазиатская коммуна"
+dyn_c_southeast_asian_commune_adj: "Юго-Восточноазиатский"
+dyn_c_southeast_asian_imperium: "Юго-Восточноазиатская империя"
+dyn_c_southeast_asian_imperium_adj: "Юго-Восточноазиатский"
+
+# Океаническая федерация
+OCF: "Океаническая федерация"
+OCF_ADJ: "Океанический"
+OCF_DEF: "Океаническая федерация"
+dyn_c_oceanic_commune: "Океаническая коммуна"
+dyn_c_oceanic_commune_adj: "Океанический"
+dyn_c_oceanic_imperium: "Океаническая империя"
+dyn_c_oceanic_imperium_adj: "Океанический"
+
+# Союз государств Южной Америки
+SUF: "Южноамериканский союз"
+SUF_ADJ: "Южноамериканский"
+SUF_DEF: "Союз государств Южной Америки"
+dyn_c_south_american_commune: "Боливарианская коммуна"
+dyn_c_south_american_commune_adj: "Боливарианский"
+dyn_c_south_american_imperium: "Южноамериканская империя"
+dyn_c_south_american_imperium_adj: "Южноамериканский"
+
+# Североамериканский союз
+NAF: "Североамериканский союз"
+NAF_ADJ: "Североамериканский"
+NAF_DEF: "Североамериканский союз"
+dyn_c_north_american_commune: "Североамериканская коммуна"
+dyn_c_north_american_commune_adj: "Североамериканский"
+dyn_c_north_american_imperium: "Североамериканская империя"
+dyn_c_north_american_imperium_adj: "Североамериканский"
+
+# Федеративная Республика Центральной Америки
+CAF: "Центральноамериканская федерация"
+CAF_ADJ: "Центральноамериканский"
+CAF_DEF: "Федеративная Республика Центральной Америки"
+dyn_c_central_american_commune: "Центральноамериканская коммуна"
+dyn_c_central_american_commune_adj: "Центральноамериканский"
+dyn_c_central_american_imperium: "Центральноамериканская империя"
+dyn_c_central_american_imperium_adj: "Центральноамериканский"
+
+# Средиземноморский союз
+MDF: "Средиземноморский союз"
+MDF_ADJ: "Средиземноморский"
+MDF_DEF: "Средиземноморский союз"
+dyn_c_mediterranean_commune: "Средиземноморская коммуна"
+dyn_c_mediterranean_commune_adj: "Средиземноморский"
+dyn_c_mediterranean_imperium: "Средиземноморская империя"
+dyn_c_mediterranean_imperium_adj: "Средиземноморский"
+
+identity_continental_confederation: "Континентальная конфедерация"
+identity_continental_confederation_desc: "Эта $concept_power_bloc_identity_extra_short$ объединяет своих участников в единый рынок и общий политический проект. Её нельзя выбрать при создании обычного [concept_power_bloc]."

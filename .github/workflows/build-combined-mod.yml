@@ -4,6 +4,7 @@ on:
     branches: [merge-work]
     paths:
       - "tools/merge_sources.py"
+      - "work/localization/russian/**"
       - ".github/workflows/build-combined-mod.yml"
   workflow_dispatch:
 permissions:
