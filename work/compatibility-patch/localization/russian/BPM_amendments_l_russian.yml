@@ -1,0 +1,13 @@
+l_russian:
+  bpm_amendment_sharecropping: "Издольщина"
+  bpm_amendment_sharecropping_desc: "$bpm_amendment_sharecropping$"
+
+  law_repeatable_politics_repeal_amendment: "Отмена поправки [GetPlayer.MakeScope.Var('bpm_repealing_amendment').GetAmendment.GetName] к закону [GetPlayer.MakeScope.Var('bpm_repealing_amendment_law').GetLaw.GetName]"
+  law_repeatable_politics_repeal_amendment_other: "Отменить поправку"
+  BPM_REPEAL_AMENDMENT: "[GetScriptedGui('bpm_repeal_amendment_confirmation_gui').IsValidTooltip(GuiScope.SetRoot(Country.MakeScope).AddScope('at', Amendment.MakeScope).End)]\n[AddTextIf(Not(GetScriptedGui('bpm_repeal_amendment_confirmation_gui').IsValid(GuiScope.SetRoot(Country.MakeScope).AddScope('at', Amendment.MakeScope).End)), Localize('TOOLTIP_DELIMITER'))]\n[GetScriptedGui('bpm_repeal_amendment_confirmation_gui').ExecuteTooltip(GuiScope.SetRoot(Country.MakeScope).AddScope('at', Amendment.MakeScope).End)]"
+  law_repeatable_politics_repeal_amendment_desc: ""
+  law_repeatable_politics_repeal_amendment_other_desc: ""
+  bpm_repeal_amendment_title: "Отмена поправки"
+  bpm_repeal_amendment_text: "Вы уверены, что хотите отменить эту [concept_amendment]?\n\nЭто действие запустит принятие [concept_law]."
+  BPM_AMENDMENT_CAN_BE_REPEALED: "#tooltippable;tooltip:BPM_AMENDMENT_CAN_BE_REPEALED_TT Поправку можно отменить#!"
+  BPM_AMENDMENT_CAN_BE_REPEALED_TT: "Эту поправку нельзя удалить из связанного с ней закона, поскольку она является конституционной или иным образом неразрывно с ним связана."
