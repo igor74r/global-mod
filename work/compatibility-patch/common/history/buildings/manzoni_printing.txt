@@ -591,7 +591,6 @@
 			}
 		}
 	}
-}
 
 	# Tech & Res compatibility: Kyoto publishing industry
 	if = {
@@ -606,3 +605,4 @@
 					}
 				}
 	}
+}
