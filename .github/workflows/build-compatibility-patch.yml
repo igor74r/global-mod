@@ -36,7 +36,7 @@ jobs:
           cp work/compatibility-patch/common/history/buildings/manzoni_printing.txt "$MOD/common/history/buildings/manzoni_printing.txt"
 
           # Include the Russian translation work already prepared for Tech & Res and Better Politics.
-          find work/localization/russian work/merged-mod/localization/russian -type f -name '*_l_russian.yml' -print0 |
+          find work/compatibility-patch/localization/russian work/localization/russian work/merged-mod/localization/russian -type f -name '*_l_russian.yml' -print0 |
             while IFS= read -r -d '' file; do
               cp "$file" "$MOD/localization/russian/$(basename "$file")"
             done
