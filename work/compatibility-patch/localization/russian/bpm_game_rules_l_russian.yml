@@ -1,0 +1,6 @@
+l_russian:
+  rule_bpm_frankfurt_parliament: "Франкфуртский парламент"
+  setting_bpm_frankfurt_parliament_active: "Включено"
+  setting_bpm_frankfurt_parliament_active_desc: "Включает Франкфуртский парламент — историческое событие, происходящее в германских государствах во время Весны народов."
+  setting_bpm_frankfurt_parliament_disabled: "Отключено"
+  setting_bpm_frankfurt_parliament_disabled_desc: "Отключает событие Франкфуртского парламента, не позволяя ему произойти в игре."
