@@ -1,0 +1,63 @@
+name: Build compatibility patch
+
+on:
+  push:
+    branches: [merge-work]
+    paths:
+      - "work/compatibility-patch/**"
+      - ".github/workflows/build-compatibility-patch.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: merge-work
+
+      - name: Assemble launcher-ready patch
+        shell: bash
+        run: |
+          set -euo pipefail
+          STAGE="$RUNNER_TEMP/Global-Mod-Compatibility-Patch"
+          MOD="$STAGE/mod/Global-Mod-Compatibility-Patch"
+          mkdir -p "$MOD/common/history/buildings"
+          cp work/compatibility-patch/descriptor.mod "$MOD/descriptor.mod"
+          cp work/compatibility-patch/README.md "$MOD/README.md"
+          cp work/compatibility-patch/common/achievement_groups.txt "$MOD/common/achievement_groups.txt"
+          cp work/compatibility-patch/common/history/buildings/mr_buildings.txt "$MOD/common/history/buildings/mr_buildings.txt"
+          cp work/compatibility-patch/common/history/buildings/manzoni_printing.txt "$MOD/common/history/buildings/manzoni_printing.txt"
+          cat > "$STAGE/Global-Mod-Compatibility-Patch.mod" <<'EOF'
+          name="Global Mod Compatibility Patch"
+          path="mod/Global-Mod-Compatibility-Patch"
+          version="1.0"
+          supported_version="1.15.*"
+          dependencies={
+            "Community Mod Framework"
+            "[1.15] Morgenroete - Dawn of Flavor"
+            "Better Politics Mod"
+            "[1.15] Tech & Res"
+          }
+          EOF
+          cd "$STAGE"
+          zip -r "$RUNNER_TEMP/Global-Mod-Compatibility-Patch.zip" .
+
+      - name: Validate package contents
+        shell: bash
+        run: |
+          set -euo pipefail
+          unzip -l "$RUNNER_TEMP/Global-Mod-Compatibility-Patch.zip"
+          test -s "$RUNNER_TEMP/Global-Mod-Compatibility-Patch.zip"
+
+      - name: Upload patch
+        uses: actions/upload-artifact@v4
+        with:
+          name: Global-Mod-Compatibility-Patch
+          path: ${{ runner.temp }}/Global-Mod-Compatibility-Patch.zip
+          if-no-files-found: error
+          retention-days: 30
