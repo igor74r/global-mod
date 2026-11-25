@@ -62,7 +62,7 @@ jobs:
           set -euo pipefail
           unzip -l "$RUNNER_TEMP/Global-Mod-Compatibility-Patch.zip"
           test -s "$RUNNER_TEMP/Global-Mod-Compatibility-Patch.zip"
-          test "$(find "$RUNNER_TEMP/Global-Mod-Compatibility-Patch/mod/localization/russian" -type f -name '*_l_russian.yml' | wc -l)" -ge 20
+          test "$(find "$RUNNER_TEMP/Global-Mod-Compatibility-Patch/mod/Global-Mod-Compatibility-Patch/localization/russian" -type f -name '*_l_russian.yml' | wc -l)" -ge 20
 
       - name: Upload patch
         uses: actions/upload-artifact@v4
