@@ -1,0 +1,7 @@
+l_russian:
+  bpm_amendment_artisanal_economy: "Ремесленная экономика"
+  bpm_amendment_artisanal_economy_desc: "$bpm_amendment_artisanal_economy$"
+  bpm_france_artisanal_lowest_level_pm: "Допускает продвинутые [concept_production_method]#gold s#! в тяжёлой промышленности"
+  bpm_france_artisanal_lowest_level_pm_desc: "Добавляет модификатор [concept_throughput] #v -95%#! тяжёлой промышленности, если используется не самый простой [concept_production_method]."
+  law_artisanal_economy_amendment: "$bpm_amendment_artisanal_economy$"
+  law_artisanal_economy_amendment_desc: ""
