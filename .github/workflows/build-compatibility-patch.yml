@@ -5,6 +5,8 @@ on:
     branches: [merge-work]
     paths:
       - "work/compatibility-patch/**"
+      - "work/localization/russian/**"
+      - "work/merged-mod/localization/russian/**"
       - ".github/workflows/build-compatibility-patch.yml"
   workflow_dispatch:
 
@@ -26,16 +28,23 @@ jobs:
           set -euo pipefail
           STAGE="$RUNNER_TEMP/Global-Mod-Compatibility-Patch"
           MOD="$STAGE/mod/Global-Mod-Compatibility-Patch"
-          mkdir -p "$MOD/common/history/buildings"
+          mkdir -p "$MOD/common/history/buildings" "$MOD/localization/russian"
           cp work/compatibility-patch/descriptor.mod "$MOD/descriptor.mod"
           cp work/compatibility-patch/README.md "$MOD/README.md"
           cp work/compatibility-patch/common/achievement_groups.txt "$MOD/common/achievement_groups.txt"
           cp work/compatibility-patch/common/history/buildings/mr_buildings.txt "$MOD/common/history/buildings/mr_buildings.txt"
           cp work/compatibility-patch/common/history/buildings/manzoni_printing.txt "$MOD/common/history/buildings/manzoni_printing.txt"
+
+          # Include the Russian translation work already prepared for Tech & Res and Better Politics.
+          find work/localization/russian work/merged-mod/localization/russian -type f -name '*_l_russian.yml' -print0 |
+            while IFS= read -r -d '' file; do
+              cp "$file" "$MOD/localization/russian/$(basename "$file")"
+            done
+
           cat > "$STAGE/Global-Mod-Compatibility-Patch.mod" <<'EOF'
           name="Global Mod Compatibility Patch"
           path="mod/Global-Mod-Compatibility-Patch"
-          version="1.0"
+          version="1.1"
           supported_version="1.15.*"
           dependencies={
             "Community Mod Framework"
@@ -53,6 +62,7 @@ jobs:
           set -euo pipefail
           unzip -l "$RUNNER_TEMP/Global-Mod-Compatibility-Patch.zip"
           test -s "$RUNNER_TEMP/Global-Mod-Compatibility-Patch.zip"
+          test "$(find "$RUNNER_TEMP/Global-Mod-Compatibility-Patch/mod/localization/russian" -type f -name '*_l_russian.yml' | wc -l)" -ge 20
 
       - name: Upload patch
         uses: actions/upload-artifact@v4
