@@ -1,0 +1,1 @@
+Build marker for the separate English-only compatibility patch workflow. This file does not alter the Russian patch or game files.
