@@ -42,7 +42,7 @@ jobs:
             done
 
           # Launcher metadata must be at the archive root, next to the mod/ directory.
-          cat > "$STAGE/Global-Mod-Compatibility-Patch.mod" <<'EOF'
+          cat > "$STAGE/mod/Global-Mod-Compatibility-Patch.mod" <<'EOF'
           name="Global Mod Compatibility Patch"
           path="mod/Global-Mod-Compatibility-Patch"
           version="1.2"
@@ -82,7 +82,8 @@ jobs:
           set -euo pipefail
           unzip -l "$RUNNER_TEMP/Global-Mod-Compatibility-Patch.zip"
           test -s "$RUNNER_TEMP/Global-Mod-Compatibility-Patch.zip"
-          unzip -p "$RUNNER_TEMP/Global-Mod-Compatibility-Patch.zip" Global-Mod-Compatibility-Patch.mod | grep -Fq 'path="mod/Global-Mod-Compatibility-Patch"'
+          unzip -p "$RUNNER_TEMP/Global-Mod-Compatibility-Patch.zip" mod/Global-Mod-Compatibility-Patch.mod | grep -Fq 'path="mod/Global-Mod-Compatibility-Patch"'
+          unzip -l "$RUNNER_TEMP/Global-Mod-Compatibility-Patch.zip" | grep -Fq "mod/Global-Mod-Compatibility-Patch.mod"
           unzip -p "$RUNNER_TEMP/Global-Mod-Compatibility-Patch.zip" mod/Global-Mod-Compatibility-Patch/descriptor.mod | grep -Fq 'name="Global Mod Compatibility Patch"'
           test "$(find "$RUNNER_TEMP/Global-Mod-Compatibility-Patch/mod/Global-Mod-Compatibility-Patch/localization/russian" -type f -name '*_l_russian.yml' | wc -l)" -ge 20
 
