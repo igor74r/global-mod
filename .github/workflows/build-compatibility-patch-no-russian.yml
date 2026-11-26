@@ -1,0 +1,107 @@
+name: Build compatibility patch (English only)
+
+on:
+  push:
+    branches: [merge-work]
+    paths:
+      - "work/compatibility-patch/**"
+      - ".github/workflows/build-compatibility-patch-no-russian.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: merge-work
+
+      - name: Assemble English-only patch
+        shell: bash
+        run: |
+          set -euo pipefail
+          STAGE="$RUNNER_TEMP/Global-Mod-Compatibility-Patch-English"
+          MOD="$STAGE/mod/Global-Mod-Compatibility-Patch"
+          mkdir -p "$MOD/.metadata" "$MOD/common/history/buildings"
+          cp work/compatibility-patch/descriptor.mod "$MOD/descriptor.mod"
+          cp work/compatibility-patch/README.md "$MOD/README.md"
+
+          cat > "$MOD/.metadata/metadata.json" <<'EOF'
+          {
+            "name": "Global Mod Compatibility Patch (English only)",
+            "id": "com.github.igor74r.globalmodcompatpatch.en",
+            "version": "1.5",
+            "game_id": "victoria3",
+            "supported_game_version": "1.15.*",
+            "short_description": "Compatibility patch for Morgenroete, Better Politics Mod and Tech & Res. No Russian localization included.",
+            "tags": ["gameplay"],
+            "relationships": [],
+            "game_custom_data": {
+              "multiplayer_synchronized": true
+            }
+          }
+          EOF
+
+          cp work/compatibility-patch/common/achievement_groups.txt "$MOD/common/achievement_groups.txt"
+          cp work/compatibility-patch/common/history/buildings/mr_buildings.txt "$MOD/common/history/buildings/mr_buildings.txt"
+          cp work/compatibility-patch/common/history/buildings/manzoni_printing.txt "$MOD/common/history/buildings/manzoni_printing.txt"
+
+          cat > "$STAGE/mod/Global-Mod-Compatibility-Patch-English.mod" <<'EOF'
+          name="Global Mod Compatibility Patch (English only)"
+          path="mod/Global-Mod-Compatibility-Patch"
+          version="1.5"
+          supported_version="1.15.*"
+          tags={
+            "Gameplay"
+          }
+          dependencies={
+            "Community Mod Framework"
+            "[1.15] Morgenroete - Dawn of Flavor"
+            "Better Politics Mod"
+            "[1.15] Tech & Res"
+          }
+          EOF
+
+          cat > "$MOD/descriptor.mod" <<'EOF'
+          name="Global Mod Compatibility Patch (English only)"
+          version="1.5"
+          supported_version="1.15.*"
+          tags={
+            "Gameplay"
+          }
+          dependencies={
+            "Community Mod Framework"
+            "[1.15] Morgenroete - Dawn of Flavor"
+            "Better Politics Mod"
+            "[1.15] Tech & Res"
+          }
+          EOF
+
+          cd "$STAGE"
+          zip -r "$RUNNER_TEMP/Global-Mod-Compatibility-Patch-English.zip" .
+
+      - name: Validate package
+        shell: bash
+        run: |
+          set -euo pipefail
+          ZIP="$RUNNER_TEMP/Global-Mod-Compatibility-Patch-English.zip"
+          unzip -t "$ZIP"
+          unzip -p "$ZIP" mod/Global-Mod-Compatibility-Patch/.metadata/metadata.json | python -m json.tool >/dev/null
+          unzip -l "$ZIP" | grep -Fq "mod/Global-Mod-Compatibility-Patch-English.mod"
+          if unzip -Z1 "$ZIP" | grep -qi 'localization/russian\|_l_russian\.yml'; then
+            echo "Russian localization unexpectedly found"
+            exit 1
+          fi
+          unzip -l "$ZIP"
+      
+      - name: Upload English-only patch
+        uses: actions/upload-artifact@v4
+        with:
+          name: Global-Mod-Compatibility-Patch-English
+          path: ${{ runner.temp }}/Global-Mod-Compatibility-Patch-English.zip
+          if-no-files-found: error
+          retention-days: 30
