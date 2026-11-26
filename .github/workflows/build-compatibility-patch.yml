@@ -41,11 +41,31 @@ jobs:
               cp "$file" "$MOD/localization/russian/$(basename "$file")"
             done
 
+          # Launcher metadata must be at the archive root, next to the mod/ directory.
           cat > "$STAGE/Global-Mod-Compatibility-Patch.mod" <<'EOF'
           name="Global Mod Compatibility Patch"
           path="mod/Global-Mod-Compatibility-Patch"
-          version="1.1"
+          version="1.2"
           supported_version="1.15.*"
+          tags={
+            "Gameplay"
+          }
+          dependencies={
+            "Community Mod Framework"
+            "[1.15] Morgenroete - Dawn of Flavor"
+            "Better Politics Mod"
+            "[1.15] Tech & Res"
+          }
+          EOF
+
+          # Keep the descriptor inside the mod folder consistent with launcher metadata.
+          cat > "$MOD/descriptor.mod" <<'EOF'
+          name="Global Mod Compatibility Patch"
+          version="1.2"
+          supported_version="1.15.*"
+          tags={
+            "Gameplay"
+          }
           dependencies={
             "Community Mod Framework"
             "[1.15] Morgenroete - Dawn of Flavor"
@@ -62,6 +82,8 @@ jobs:
           set -euo pipefail
           unzip -l "$RUNNER_TEMP/Global-Mod-Compatibility-Patch.zip"
           test -s "$RUNNER_TEMP/Global-Mod-Compatibility-Patch.zip"
+          unzip -p "$RUNNER_TEMP/Global-Mod-Compatibility-Patch.zip" Global-Mod-Compatibility-Patch.mod | grep -Fq 'path="mod/Global-Mod-Compatibility-Patch"'
+          unzip -p "$RUNNER_TEMP/Global-Mod-Compatibility-Patch.zip" mod/Global-Mod-Compatibility-Patch/descriptor.mod | grep -Fq 'name="Global Mod Compatibility Patch"'
           test "$(find "$RUNNER_TEMP/Global-Mod-Compatibility-Patch/mod/Global-Mod-Compatibility-Patch/localization/russian" -type f -name '*_l_russian.yml' | wc -l)" -ge 20
 
       - name: Upload patch
