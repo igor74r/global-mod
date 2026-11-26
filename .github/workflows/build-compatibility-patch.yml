@@ -28,9 +28,26 @@ jobs:
           set -euo pipefail
           STAGE="$RUNNER_TEMP/Global-Mod-Compatibility-Patch"
           MOD="$STAGE/mod/Global-Mod-Compatibility-Patch"
-          mkdir -p "$MOD/common/history/buildings" "$MOD/localization/russian"
+          mkdir -p "$MOD/.metadata" "$MOD/common/history/buildings" "$MOD/localization/russian"
           cp work/compatibility-patch/descriptor.mod "$MOD/descriptor.mod"
           cp work/compatibility-patch/README.md "$MOD/README.md"
+
+          # Victoria 3 launcher reads metadata from .metadata/metadata.json.
+          cat > "$MOD/.metadata/metadata.json" <<'EOF'
+          {
+            "name": "Global Mod Compatibility Patch",
+            "id": "com.github.igor74r.globalmodcompatpatch",
+            "version": "1.3",
+            "game_id": "victoria3",
+            "supported_game_version": "1.15.*",
+            "short_description": "Compatibility and Russian localization patch for Morgenroete, Better Politics Mod and Tech & Res.",
+            "tags": ["gameplay"],
+            "relationships": [],
+            "game_custom_data": {
+              "multiplayer_synchronized": true
+            }
+          }
+          EOF
           cp work/compatibility-patch/common/achievement_groups.txt "$MOD/common/achievement_groups.txt"
           cp work/compatibility-patch/common/history/buildings/mr_buildings.txt "$MOD/common/history/buildings/mr_buildings.txt"
           cp work/compatibility-patch/common/history/buildings/manzoni_printing.txt "$MOD/common/history/buildings/manzoni_printing.txt"
@@ -85,6 +102,8 @@ jobs:
           unzip -p "$RUNNER_TEMP/Global-Mod-Compatibility-Patch.zip" mod/Global-Mod-Compatibility-Patch.mod | grep -Fq 'path="mod/Global-Mod-Compatibility-Patch"'
           unzip -l "$RUNNER_TEMP/Global-Mod-Compatibility-Patch.zip" | grep -Fq "mod/Global-Mod-Compatibility-Patch.mod"
           unzip -p "$RUNNER_TEMP/Global-Mod-Compatibility-Patch.zip" mod/Global-Mod-Compatibility-Patch/descriptor.mod | grep -Fq 'name="Global Mod Compatibility Patch"'
+          unzip -p "$RUNNER_TEMP/Global-Mod-Compatibility-Patch.zip" mod/Global-Mod-Compatibility-Patch/.metadata/metadata.json | grep -Fq '"game_id": "victoria3"'
+          unzip -p "$RUNNER_TEMP/Global-Mod-Compatibility-Patch.zip" mod/Global-Mod-Compatibility-Patch/.metadata/metadata.json | python -m json.tool >/dev/null
           test "$(find "$RUNNER_TEMP/Global-Mod-Compatibility-Patch/mod/Global-Mod-Compatibility-Patch/localization/russian" -type f -name '*_l_russian.yml' | wc -l)" -ge 20
 
       - name: Upload patch
